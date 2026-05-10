@@ -1,0 +1,7 @@
+{
+  "target": "google.com",
+  "mode": "domain",
+  "whois": "Domain Name: GOOGLE.COM\nRegistry Domain ID: 2138514_DOMAIN_COM-VRSN\nRegistrar WHOIS Server: whois.markmonitor.com\nRegistrar URL: http://www.markmonitor.com\nUpdated Date: 2019-09-09T15:39:04Z\nCreation Date: 1997-09-15T04:00:00Z\nRegistry Expiry Date: 2028-09-14T04:00:00Z",
+  "dig": "; <<>> DiG 9.18.x <<>> google.com ANY\n;; ANSWER SECTION:\ngoogle.com.\t\t300\tIN\tA\t142.250.190.46\ngoogle.com.\t\t300\tIN\tMX\t10 smtp.google.com.\ngoogle.com.\t\t300\tIN\tTXT\t\"v=spf1 include:_spf.google.com ~all\"\ngoogle.com.\t\t300\tIN\tNS\tns1.google.com.",
+  "headers": "HTTP/2 301 \nlocation: https://www.google.com/\ncontent-type: text/html; charset=UTF-8\nserver: gws\nx-xss-protection: 0\nx-frame-options: SAMEORIGIN\nstrict-transport-security: max-age=31536000\nexpires: Thu, 12 May 2026 10:15:03 GMT\ncache-control: public, max-age=2592000"
+}

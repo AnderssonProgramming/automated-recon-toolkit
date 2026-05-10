@@ -1,0 +1,6 @@
+2026-05-12 10:15:02,123 INFO Running: whois google.com
+2026-05-12 10:15:02,645 INFO Success. Exit code: 0
+2026-05-12 10:15:02,646 INFO Running: dig google.com ANY
+2026-05-12 10:15:02,812 INFO Success. Exit code: 0
+2026-05-12 10:15:02,812 INFO Running: curl -I -s https://google.com
+2026-05-12 10:15:03,105 INFO Success. Exit code: 0

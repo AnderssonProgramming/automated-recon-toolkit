@@ -35,6 +35,15 @@ Per the laboratory requirements, this suite of security tools is designed to run
 * **Python Version required:** Python 3.10+
 * **System Binaries required:** `nmap`, `whois`, `dig`, `curl`, `ssh-keyscan`
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ### Dependencies
 All core scripts utilize the Python Standard Library (`asyncio`, `argparse`, `xml.etree.ElementTree`, `subprocess`, `re`, `statistics`, `logging`). Therefore, **no external pip installation is required** for the required deliverables. 
 
@@ -56,6 +65,11 @@ Below is the execution guide and architectural justification for the scripts inc
 * **Purpose:** Parses Nmap's `-oX` XML output and dynamically enriches SSH findings.
 * **Design Choices:** We used the built-in `xml.etree.ElementTree` to avoid third-party dependencies. For enrichment, we utilized `subprocess` to trigger `ssh-keyscan` against hosts with port 22 open. Crucially, we included a `timeout=5` parameter to ensure the pipeline fails gracefully and independently if the target firewall drops the packets.
 
+<br>
+<br>
+<br>
+<br>
+
 ### Part 3: `auth_analysis.py` & `log_analysis.py` (Anomaly Detection)
 * **Usage Example:** `python3 auth_analysis.py` && `python3 log_analysis.py`
 * **Purpose:** Ingests server logs to identify brute-force targets, attack signatures, and statistical anomalies.
@@ -73,25 +87,48 @@ Below is the execution guide and architectural justification for the scripts inc
 
 ### Phase 1: High-Speed Concurrency Execution
 Execution of the `asyncio` scanner against the loopback interface demonstrated extreme efficiency, completing 1,024 ports in 0.02s while adhering to a 200-connection rate limit.
-![Async Scanner Execution](images/async-scanner.png)
-![Scan Results JSON](images/scan-results-json.png)
+![Async Scanner Execution](async-scanner.png)
+![Scan Results JSON](scan-results-json.png)
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ### Phase 2: Structured Nmap Parsing
 The parser successfully read `scan.xml` and enriched Port 22 with cryptographic key data (`ssh-ed25519`) using external subprocesses.
-![Parse Scan Execution](images/parse-scan-execution.png)
-![Hosts JSON Enriched](images/hosts-json-enriched.png)
+![Parse Scan Execution](parse-scan-execution.png)
+![Hosts JSON Enriched](hosts-json-enriched.png)
+
+<br>
+<br>
+<br>
+<br>
 
 ### Phase 3: Log Mining & 3-Sigma Anomaly Detection
 The scripts identified a severe brute-force campaign from `185.220.101.5`, detected specific SQLi/LFI requests, and flagged `Hour 03` as a 3-Sigma anomaly (Z=3.1σ).
-![Auth Analysis Log](images/auth-analysis-log.png)
-![Log Analysis Output](images/log-analysis-output.png)
+![Auth Analysis Log](auth-analysis-log.png)
+![Log Analysis Output](log-analysis-output.png)
+
+<br>
+<br>
+<br>
+<br>
 
 ### Phase 4: Integrated Recon Tool
 The final orchestration successfully gathered active/passive intel, maintained an audit trail, and did not crash despite any isolated tool failures.
-![Recon Script Execution](images/recon-py-execution.png)
-![Recon Audit Log](images/recon-audit-log.png)
+![Recon Script Execution](recon-py-execution.png)
+![Recon Audit Log](recon-audit-log.png)
 
 ---
+
+<br>
+<br>
+<br>
 
 ## 4. Analytical Questions
 
@@ -113,34 +150,4 @@ The final orchestration successfully gathered active/passive intel, maintained a
 * **Detection:** Passive recon is virtually undetectable by the target. Active recon triggers firewalls and IDS alerts.
 * **Scenarios:** Passive recon is ideal for initial OSINT and stealthy footprinting. Active recon is mandatory for internal network testing or discovering dynamic services not yet indexed by search engines.
 
----
-
-## 3. Project Structure
-
-Below is a technical overview of the repository's organization:
-
-```text
-.
-├── Automation.md           # Raw report content (Markdown)
-├── Automation.pdf          # Main Technical Report (Final Export)
-├── images/                 # Supporting evidence and architecture diagrams
-├── README.md               # Main landing page (this file)
-└── submission/             # Core deliverables
-    ├── auth_analysis.py    # Log analyzer for authentication attempts
-    ├── log_analysis.py     # General access log pattern matcher
-    ├── parse_scan.py       # XML-to-JSON parser for Nmap/Scanner output
-    ├── recon.py            # Automated footprinting (DNS, Whois, Banner)
-    ├── scanner.py          # Concurrent TCP port scanner
-    ├── others/             # Raw logs and intermediate data files
-    │   ├── access.log      # Sample web server logs
-    │   ├── auth.log        # Sample SSH/Auth logs
-    │   └── host.json       # Target metadata
-    └── sample_output/      # Generated reports and JSON datasets
-        ├── report.md       # Evidence report
-        └── results.json    # Structured scan output
-```
-
----
-
-**Note:** For the complete technical analysis and laboratory conclusions, please refer to the main report: [Automation.pdf](Automation.pdf).
- 
+--- 

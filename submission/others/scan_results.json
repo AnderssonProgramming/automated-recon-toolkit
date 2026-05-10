@@ -1,0 +1,8 @@
+{
+  "target": "127.0.0.1",
+  "scan_time_seconds": 0.07,
+  "timestamp": "2026-05-09T22:03:52",
+  "open_ports": [
+    80
+  ]
+}

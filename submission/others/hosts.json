@@ -1,0 +1,17 @@
+[
+    {
+        "ip": "127.0.0.1",
+        "open_ports": [
+            {
+                "port": 80,
+                "service": "http",
+                "version": "2.4.66"
+            },
+            {
+                "port": 3306,
+                "service": "mysql",
+                "version": null
+            }
+        ]
+    }
+]
